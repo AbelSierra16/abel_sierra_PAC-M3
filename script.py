@@ -1,16 +1,5 @@
-from cowsay import cowsay
-import os
+from funciones import *
 
-def mostrarMenu():
-    print("========================================")
-    print("= El Llibre de les Accepcions          =")
-    print("========================================")
-    print("1. Añadir palabra y accepción")
-    print("2. Mostrar palabras y accepciones")
-    print("3. Modificar palabra o accepción")
-    print("4. Eliminar palabra o accepción")
-    print("5. Salir")
-    print("========================================")
 
 
 
@@ -20,28 +9,34 @@ diccionari = {}
 while True:
 
     os.system('cls')
-    mostrarMenu()
+    menuInicial()
 
     eleccion = int(input('Elige una opcion: '))
 
     if eleccion == 1:
+        menuAfegir()
         palabra  = input('Introduce la palabra: ')
-        accepcion = input('Introduce l''acepcion: ')
+        if(palabra in diccionari):
+            print('No pots afegir una paraula ja existent')
 
-        diccionari.update({palabra:accepcion})
+        else:
+            accepcion = input('Introduce l''acepcion: ')
+            diccionari.update({palabra:accepcion})
 
     elif eleccion == 2:
-        print(cowsay(str(diccionari)))
-        input()
+        mostrarParaules(diccionari)
+        input('Presiona para continuar')
 
     elif eleccion == 3:
-        modificar = int(input('Que quieres modificar?(1. Palabra, 2. Acepcion) '))
+        mostrarParaules()
+        modificar = int(input('Que palabra quieres modificar? '))
 
-        if modificar == 1:
-            auxiliar = input('Introdueix la nova palabra ')
-            diccionari.update({auxiliar:accepcion})
-            print('Palabra modificada correctamente')
-            input()
+        if modificar in diccionari:
+            eleccionMod = input('Quieres cambiar la palabra(1) o acepcion(2)?')
+
+            if eleccionMod == 1:
+                aux = input('Introduce la Palabra modificada: ')
+           
         else:
             auxiliar = input('Introduce la nueva acepcion')
             diccionari.update({palabra:auxiliar})
