@@ -42,6 +42,7 @@ while True:
                 diccionari[modificar] = nueva_acepcion
         else:
             print('La palabra que quieres modificar no existe en el diccionario.')
+            input('Presiona para continuar')
 
     elif eleccion == 4:
         mostrarParaules(diccionari)
