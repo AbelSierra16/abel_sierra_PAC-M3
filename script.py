@@ -32,14 +32,17 @@ while True:
         modificar = input('Que palabra quieres modificar? ')
 
         if modificar in diccionari:
-            eleccionMod = input('Quieres cambiar la palabra(1) o acepcion(2)?')
+            eleccionMod = input('Quieres cambiar la palabra(1), acepcion(2) o añadir una nueva acepcion(3)?')
 
-            if eleccionMod == '1':
-                nueva_palabra = input('Introduce la Palabra modificada: ')
-                diccionari[nueva_palabra] = diccionari.pop(modificar)
-            elif eleccionMod == '2':
-                nueva_acepcion = input('Introduce la nueva acepcion: ')
-                diccionari[modificar] = nueva_acepcion
+        if eleccionMod == '1':
+            nueva_palabra = input('Introduce la Palabra modificada: ')
+            diccionari[nueva_palabra] = diccionari.pop(modificar)
+        elif eleccionMod == '2':
+            nueva_acepcion = input('Introduce la nueva acepcion: ')
+            diccionari[modificar] = nueva_acepcion
+        elif eleccionMod == '3':
+            nueva_acepcion = input('Introduce la nueva acepcion: ')
+            diccionari[modificar] = diccionari[modificar] + ', ' + nueva_acepcion
         else:
             print('La palabra que quieres modificar no existe en el diccionario.')
             input('Presiona para continuar')
