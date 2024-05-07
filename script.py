@@ -1,10 +1,16 @@
 from funciones import *
 
 
+diccionari ={}
 
+palabra = ""
+entrada = {}
+
+valorEntrada = ""
+clauEntrada  = ""
 
 #def main():
-diccionari = {}
+
 
 while True:
 
@@ -15,39 +21,40 @@ while True:
 
     if eleccion == 1:
         menuAfegir()
-        palabra  = input('Introduce la palabra: ')
+        palabra = input('Introdueix una palabra: ')
         if(palabra in diccionari):
             print('No pots afegir una paraula ja existent')
 
         else:
-            accepcion = input('Introduce l''acepcion: ')
-            diccionari.update({palabra:accepcion})
+            clauEntrada = input('Introdueix la clau de la palabra: ')
+            valorEntrada = input('Introdueix el valor de la clau: ')
+
+            entrada = {clauEntrada:valorEntrada}
+
+            diccionari.update({palabra:entrada})
 
     elif eleccion == 2:
+        menuMostrar()
         mostrarParaules(diccionari)
         input('Presiona para continuar')
 
     elif eleccion == 3:
+        menuMostrar()
         mostrarParaules(diccionari)
-        modificar = input('Que palabra quieres modificar? ')
+        modificar = input('Que palabra quieres modificar : ')
 
         if modificar in diccionari:
-            eleccionMod = input('Quieres cambiar la palabra(1), acepcion(2) o añadir una nueva acepcion(3)?')
+            clauEntrada = input('Introdueix la clau de la palabra: ')
+            valorEntrada = input('Introdueix el valor de la clau: ')
+            entrada = {clauEntrada:valorEntrada}
 
-        if eleccionMod == '1':
-            nueva_palabra = input('Introduce la Palabra modificada: ')
-            diccionari[nueva_palabra] = diccionari.pop(modificar)
-        elif eleccionMod == '2':
-            nueva_acepcion = input('Introduce la nueva acepcion: ')
-            diccionari[modificar] = nueva_acepcion
-        elif eleccionMod == '3':
-            nueva_acepcion = input('Introduce la nueva acepcion: ')
-            diccionari[modificar] = diccionari[modificar] + ', ' + nueva_acepcion
-        else:
-            print('La palabra que quieres modificar no existe en el diccionario.')
-            input('Presiona para continuar')
+            auxiliar = diccionari[modificar]
+
+            auxiliar.update(entrada)
+            diccionari.update({palabra:auxiliar})
 
     elif eleccion == 4:
+        menuMostrar()
         mostrarParaules(diccionari)
         eliminar = input('Que palabra quieres eliminar? ')
 

@@ -22,9 +22,15 @@ def menuAfegir():
     print("|======================================|\n")
     """Prnta el menu de añadir nuevas palabras/acepciones"""
  
+def menuMostrar():
+    os.system('cls')
+    print("|======================================|")
+    print("|    Palabras y acepciones actuales    |")
+    print("|======================================|\n")
+    """Prnta el menu para mostrar las palabras y acepciones actuales"""
 
 def mostrarParaules(diccionari):
-    os.system('cls')
+    
     diccionari_str = "\n".join(f"{k}: {v}\n" for k, v in diccionari.items())
     print(cowsay(diccionari_str))
     """Muestra el diccionario de palabras formateado a string mediante la libreria cowsay"""
